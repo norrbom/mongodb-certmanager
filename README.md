@@ -2,7 +2,7 @@
 
 ## Clone the Community Operator repository
 ```
-git clone git clone --depth 1 --branch v0.7.3 https://github.com/mongodb/mongodb-kubernetes-operator.git
+git clone --depth 1 --branch v0.7.3 https://github.com/mongodb/mongodb-kubernetes-operator.git
 ```
 
 ## Setup Kind
