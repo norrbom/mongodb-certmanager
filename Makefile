@@ -10,11 +10,6 @@ kind-up:
 	kubectl cluster-info --context kind-mongodb
 	kind export kubeconfig --name mongodb
 
-kind-up:
-	kind create cluster --config=kind/config.yaml --wait 5m
-	kubectl cluster-info --context kind-mongodb
-	kind export kubeconfig --name mongodb
-
 install:
 	kubectl create ns mongodb
 	kubectl apply -k mongodb-kubernetes-operator/config/rbac/ --namespace mongodb
