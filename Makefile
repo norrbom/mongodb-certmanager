@@ -11,10 +11,11 @@ kind-up:
 	kind export kubeconfig --name mongodb
 
 install:
-	kubectl create ns mongodb
-	kubectl apply -k mongodb-kubernetes-operator/config/rbac/ --namespace mongodb
-	kubectl create -f mongodb-kubernetes-operator/config/manager/manager.yaml --namespace mongodb
-	kubectl get pods --namespace mongodb
+	kustomize build overlays/kind
+	kubectl apply -k overlays/kind
+
+deploy:
+	kubectl apply -f samples/cr.yaml --namespace mongodb
 
 cleanup:
 	rm -fr mongodb-kubernetes-operator
