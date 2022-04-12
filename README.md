@@ -13,6 +13,7 @@ kind export kubeconfig --name mongodb
 ```
 ## Install the Operator
 ```
+cd mongodb-kubernetes-operator
 kubectl create ns mongodb
 kubectl apply -k config/rbac/ --namespace mongodb
 kubectl create -f config/manager/manager.yaml --namespace mongodb
