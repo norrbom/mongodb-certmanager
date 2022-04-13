@@ -29,3 +29,8 @@ deploy:
 cleanup:
 	rm -fr mongodb-kubernetes-operator
 	kind delete clusters mongodb
+
+smoketest:
+	# require port forward: kubectl --namespace mongodb port-forward service/mongodb-svc 27017:27017
+	# consider telepresence
+	mongo -u admin -p verysecret --eval "db"
