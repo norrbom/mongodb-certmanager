@@ -1,4 +1,4 @@
-# Integration test MongoDB Community Operator with Cert Manager on Kind
+# Integration test MongoDB Community Operator with Prometheus and Cert Manager on Kind
 
 ## Install MongoDB
 ```

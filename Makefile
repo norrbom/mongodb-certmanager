@@ -1,9 +1,11 @@
 SHELL := /bin/bash
 
-VERSION ?= v0.7.3
+MONGO_VERSION ?= v0.7.3
+MONGO_HELM_REPO ?= https://mongodb.github.io/helm-charts
+MONGO_GIT_REPO ?= https://github.com/mongodb/mongodb-kubernetes-operator.git
 
 git-clone:
-	@[ -d mongodb-kubernetes-operator ] || git clone --depth 1 --branch $(VERSION) https://github.com/mongodb/mongodb-kubernetes-operator.git || true
+	@[ -d mongodb-kubernetes-operator ] || git clone --depth 1 --branch $(MONGO_VERSION) $(MONGO_GIT_REPO) || true
 
 kind-up:
 	@kind get clusters | grep mongodb || kind create cluster --config=kind/config.yaml --wait 5m
@@ -15,14 +17,14 @@ install: git-clone
 	kubectl apply -k overlays/kind
 
 install-helm:
-	@helm repo list | grep "https://mongodb.github.io/helm-charts" || helm repo add mongodb https://mongodb.github.io/helm-charts
-	helm --namespace mongodb upgrade --install --create-namespace community-operator mongodb/community-operator --version $(VERSION)
-
+	@helm repo list | grep $(MONGO_HELM_REPO) || helm repo add mongodb $(MONGO_HELM_REPO)
+	helm --namespace mongodb upgrade --install --create-namespace community-operator mongodb/community-operator --version $(MONGO_VERSION)
+	
 uninstall-helm:
 	helm uninstall --namespace mongodb community-operator
 
 deploy:
-	kubectl apply -f samples/cr.yaml --namespace mongodb
+	kubectl apply -f samples/mongodb.yaml --namespace mongodb
 
 cleanup:
 	rm -fr mongodb-kubernetes-operator
