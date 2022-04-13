@@ -2,16 +2,17 @@
 
 ## Install MongoDB
 ```
-make git-clone
-make kind-up install deploy
+make kind-up install-helm deploy
 ```
-## Delete the cluster and cleanup
+## Delete the cluster
 ```
 make cleanup
 ```
 ## Install Cert Manager
 
 ## Smoke test MongoDB
+
+## Upgrade MongoDB
 
 ## Increase replica set during load
 
