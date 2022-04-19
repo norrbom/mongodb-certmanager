@@ -18,7 +18,7 @@ install: git-clone
 
 install-helm:
 	@helm repo list | grep $(MONGO_HELM_REPO) || helm repo add mongodb $(MONGO_HELM_REPO)
-	helm --namespace mongodb upgrade --install --create-namespace community-operator mongodb/community-operator --version $(MONGO_VERSION)
+	helm -f values.yaml --namespace mongodb upgrade --install --create-namespace community-operator mongodb/community-operator --version $(MONGO_VERSION)
 	
 uninstall-helm:
 	helm uninstall --namespace mongodb community-operator
