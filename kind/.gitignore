@@ -1,0 +1,6 @@
+### misc things
+
+.vscode
+
+### docker registry secrets
+kind/secret.json
