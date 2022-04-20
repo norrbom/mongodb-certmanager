@@ -1,8 +1,11 @@
 # Integration test MongoDB Community Operator with Prometheus and Cert Manager on Kind
 
-## Install MongoDB
+## Configure docker registry credentials
+edit kind/secret.json
+
+## Install MongoDB on Kind
 ```
-make kind-up install-helm deploy
+make install-kind deploy
 ```
 ## Delete the cluster
 ```
