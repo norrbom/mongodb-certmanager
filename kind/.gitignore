@@ -3,4 +3,4 @@
 .vscode
 
 ### docker registry secrets
-kind/secret.json
+*/secret.json
