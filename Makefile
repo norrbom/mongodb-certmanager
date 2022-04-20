@@ -45,6 +45,9 @@ cleanup:
 	kind delete clusters mongodb
 
 smoketest:
-	# require port forward: kubectl --namespace mongodb port-forward service/mongodb-svc 27017:27017
-	# consider telepresence
-	mongo -u admin -p verysecret --eval "db"
+	kubectl --namespace mongodb delete pod mongoclient > /dev/null 2>&1 || true
+	kubectl run mongoclient --namespace mongodb \
+	--stdin --tty --rm --restart=Never \
+	--image=docker.io/mongo:5.0.6 \
+	--command -- mongo -u admin -p verysecret --eval "db" --host mongodb-svc:27017
+	
