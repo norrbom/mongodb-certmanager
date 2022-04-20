@@ -3,4 +3,4 @@ kind: Kustomization
 
 bases:
 - ../../base
-- ../../mongodb-kubernetes-operator/config/default
+- ../../../mongodb-kubernetes-operator/config/default

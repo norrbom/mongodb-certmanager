@@ -4,15 +4,22 @@
 edit kind/secret.json
 
 ## Install MongoDB and Cert Manager on Kind
+Using Helm
 ```
 make install-kind deploy
+```
+Using Kustomize
+```
+make install-kind-kustomize deploy
+```
+## Smoke test MongoDB
+```
+make smoketest
 ```
 ## Delete the cluster
 ```
 make cleanup
 ```
-## Smoke test MongoDB
-
 ## Upgrade MongoDB
 
 ## Increase replica set during load
