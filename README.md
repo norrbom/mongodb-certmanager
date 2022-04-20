@@ -3,7 +3,7 @@
 ## Configure docker registry credentials
 edit kind/secret.json
 
-## Install MongoDB on Kind
+## Install MongoDB and Cert Manager on Kind
 ```
 make install-kind deploy
 ```
@@ -11,8 +11,6 @@ make install-kind deploy
 ```
 make cleanup
 ```
-## Install Cert Manager
-
 ## Smoke test MongoDB
 
 ## Upgrade MongoDB
