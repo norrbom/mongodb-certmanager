@@ -1,8 +1,10 @@
 # Integration test MongoDB Community Operator with Prometheus and Cert Manager on Kind
 
-## Configure docker registry credentials
-edit kind/secret.json
-
+## Configure docker registry credentials (Optional)
+```
+export DOCKER_USER=<username>
+export DOCKER_PASSWORD=<password>
+```
 ## Install MongoDB and Cert Manager on Kind
 Using Helm
 ```
@@ -20,8 +22,3 @@ make smoketest
 ```
 make cleanup
 ```
-## Upgrade MongoDB
-
-## Increase replica set during load
-
-## Rotate Certificates under load

@@ -10,6 +10,7 @@ install-kind: kind-up intall-certm install-mongodb
 install-kind-kustomize: kind-up intall-certm install-mongodb-kustomize
 
 kind-up:
+	sh kind/generate-config.sh
 	@kind get clusters | grep mongodb || kind create cluster --config=kind/config.yaml --wait 5m
 	kubectl cluster-info --context kind-mongodb
 	kind export kubeconfig --name mongodb
@@ -42,6 +43,7 @@ deploy:
 
 cleanup:
 	rm -fr mongodb-kubernetes-operator
+	rm -fr kind/secret.json
 	kind delete clusters mongodb
 
 smoketest:
