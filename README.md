@@ -1,4 +1,4 @@
-# Integration test MongoDB Community Operator with Prometheus and Cert Manager on Kind
+# Deploy MongoDB Community Operator and Cert Manager on Kind
 
 ## Configure docker registry credentials (Optional)
 ```
